@@ -1,0 +1,5 @@
+#
+GET https://api.64clouds.com/v1/getServiceInfo?veid=&api_key=
+Accept: application/json
+
+###
