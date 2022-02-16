@@ -122,6 +122,7 @@ func getData(config HostConfig, gaugeVec *prometheus.GaugeVec, client *http.Clie
 
 	gaugeVec.WithLabelValues(config.Name, `plan`).Set(float64(result.PlanMonthlyData * result.MonthlyDataMultiplier))
 	gaugeVec.WithLabelValues(config.Name, `used`).Set(float64(result.DataCounter * result.MonthlyDataMultiplier))
+	gaugeVec.WithLabelValues(config.Name, `left`).Set(float64((result.PlanMonthlyData - result.DataCounter) * result.MonthlyDataMultiplier))
 	gaugeVec.WithLabelValues(config.Name, `renew`).Set(float64(result.DataNextReset))
 	gaugeVec.WithLabelValues(config.Name, `last`).Set(float64(time.Now().Unix()))
 }
